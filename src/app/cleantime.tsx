@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 
 export const CleanTime = () => {
   const [dateEntered, setDateEntered] = useState("");
-   const [cleanTime, setCleanTime] = useState({
-     days: 0,
-     weeks: 0,
-     months: 0,
-     years: 0,
-   });
+  const [cleanTime, setCleanTime] = useState({
+    days: 0,
+    weeks: 0,
+    months: 0,
+    years: 0,
+  });
 
   const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newDate = e.target.value;
@@ -48,7 +48,11 @@ export const CleanTime = () => {
             {cleanTime.years > 0 && `${cleanTime.years} years, `}
             {cleanTime.months > 0 && `${cleanTime.months} months, `}
             {cleanTime.weeks > 0 && `${cleanTime.weeks} weeks, `}
-            {cleanTime.days} days!
+            {cleanTime.days > 1
+              ? `${cleanTime.days} days!`
+              : cleanTime.days === 1
+              ? "1 day!"
+              : "0 days!"}
           </div>
         )}
       </div>
